@@ -1,0 +1,182 @@
+{
+	"variables": [],
+	"info": {
+		"name": "spring-security-with-jwt-authentication",
+		"_postman_id": "4204881f-533c-e9fa-959d-c9c4bbfddfde",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register as Moderator",
+			"request": {
+				"url": "localhost:8080/api/auth/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"mod\",\n\t\"email\": \"mod@gmail.com\",\n\t\"password\": \"secret\",\n\t\"role\": [\"mod\", \"user\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Register as Normal User",
+			"request": {
+				"url": "localhost:8080/api/auth/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"user\",\n\t\"email\": \"user@gmail.com\",\n\t\"password\": \"secret\",\n\t\"role\": [\"user\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Register as Admin",
+			"request": {
+				"url": "localhost:8080/api/auth/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"admin\",\n\t\"email\": \"admin@gmail.com\",\n\t\"password\": \"secret\",\n\t\"role\": [\"user\", \"mod\", \"admin\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login with user credentials",
+			"request": {
+				"url": "localhost:8080/api/auth/signin",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"user\",\n\t\"password\": \"secret\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login with moderator credentails",
+			"request": {
+				"url": "localhost:8080/api/auth/signin",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"mod\",\n\t\"password\": \"secret\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login with admin credentails",
+			"request": {
+				"url": "localhost:8080/api/auth/signin",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"secret\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Access user content",
+			"request": {
+				"url": "localhost:8080/api/test/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNjE3NDM2MTM2LCJleHAiOjE2MTc1MjI1MzZ9.5B-IPjVJOr74SY-dIn0CAiETTv9uY0Wk4bw7vjEYAR2poTljWDfeofC8BE6kKrzCmY_F1ZokSkKxtX-kmaMu5A",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Access Moderator content",
+			"request": {
+				"url": "localhost:8080/api/test/mod",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2QiLCJpYXQiOjE2MTc0MzYzNDksImV4cCI6MTYxNzUyMjc0OX0.hrXf3Ph9Gt4oI1MFm5Wt2KlRfngAy5T4mTyOV8b9Cz1QvXoo7JUTe76X0v6V5JdnAStuLkbvM096l-6fuEURaQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Access admin content",
+			"request": {
+				"url": "localhost:8080/api/test/admin",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYxNzQzNjUwMiwiZXhwIjoxNjE3NTIyOTAyfQ.So8P9lmtQAd-GF4M2M0aSXA-YZwE4ooW53hdEu5yWdJjve2H8_VUAnLI-8LKVkWNsNNssjX49DKJarV2oRqwtw",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
